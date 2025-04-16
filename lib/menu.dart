@@ -11,16 +11,36 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Pizza Menu")),
-      body: SingleChildScrollView(
-        child: Column(
-          children: 
-          // _buildItems(),
-          pizzaData.map((pizza)=> MenuItem(pizza: pizza)).toList(),
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children:
+                    // _buildItems(),
+                    pizzaData.map((pizza) => MenuItem(pizza: pizza)).toList(),
+              ),
+            ),
+          ),
+          if(isOpen())
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text("Order now!"),
+            ),
+          ),
+        ],
       ),
     );
   }
+  bool isOpen(){
+    var horaInicial = 19;
+    var horaFinal = 23;
+    var horaAtual = DateTime.now().hour;
 
+    return horaAtual >= horaInicial && horaAtual < horaFinal;
+  }
   List<MenuItem> _buildItems() {
     List<MenuItem> menusItens = [];
     for (Pizza pizza in pizzaData) {

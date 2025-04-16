@@ -31,7 +31,7 @@ class MenuItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${pizza.name}",
+                    pizza.name,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
